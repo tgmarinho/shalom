@@ -26,7 +26,7 @@
 		<thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
 		<thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
 		<thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
-		<thymeleaf-extras-springsecurity4.version>3.0.1.RELEASE</thymeleaf-extras-springsecurity4.version>
+<!-- 		<thymeleaf-extras-springsecurity4.version>3.0.1.RELEASE</thymeleaf-extras-springsecurity4.version> -->
 
 		<!-- Versão mais atual do Thymeleaf e Layout <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version> 
 		<thymeleaf-layout-dialect.version>2.0.5</thymeleaf-layout-dialect.version> -->
@@ -36,7 +36,7 @@
 		<commons-beanutils.version>1.9.2</commons-beanutils.version>
 
 		<!-- Spring Security -->
-		<spring-security.version>4.1.1.RELEASE</spring-security.version>
+<!-- 		<spring-security.version>4.1.1.RELEASE</spring-security.version> -->
 
 		<flyway-maven-plugin.version>4.0.2</flyway-maven-plugin.version>
 		
@@ -80,16 +80,16 @@
 			<optional>true</optional>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-security</artifactId> -->
+<!-- 		</dependency> -->
 
 
-		<dependency>
-			<groupId>org.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.thymeleaf.extras</groupId> -->
+<!-- 			<artifactId>thymeleaf-extras-springsecurity4</artifactId> -->
+<!-- 		</dependency> -->
 
 <!-- 		<dependency> -->
 <!-- 			<groupId>org.flywaydb</groupId> -->
