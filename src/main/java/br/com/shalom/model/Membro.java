@@ -34,7 +34,7 @@ public class Membro {
 	@Embedded
 	private Endereco endereco;
 	
-	
+	private String email;
 	
 
 	public Long getId() {
@@ -116,6 +116,14 @@ public class Membro {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	

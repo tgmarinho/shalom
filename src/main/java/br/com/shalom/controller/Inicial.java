@@ -9,7 +9,7 @@ public class Inicial {
 	
 	@GetMapping("/")
 	public String root() {
-		return "DashBoard";
+		return "membros/CadastrarMembro";
 	}
 	
 }
