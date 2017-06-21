@@ -11,8 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name = "membro")
+@DynamicUpdate
 public class Membro {
 
 	@Id
@@ -28,6 +31,9 @@ public class Membro {
 	@Enumerated(EnumType.STRING)
 	private Situacao situacao;
 	
+	@Enumerated(EnumType.STRING)
+	private Status status;
+	
 	@Embedded
 	private Telefone telefone;
 	
@@ -36,6 +42,9 @@ public class Membro {
 	
 	private String email;
 	
+	private String cpf;
+	
+	private String observacao;
 
 	public Long getId() {
 		return id;
@@ -126,7 +135,38 @@ public class Membro {
 		this.email = email;
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
 	
+	
+	
+	
+	
+	public boolean isNovo(){
+		return id == null;
+	}
 	
 	
 }

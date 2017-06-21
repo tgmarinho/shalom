@@ -1,10 +1,80 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/LayoutPadrao}"
+    xmlns:shalom="http://shalom.com.br"
+	xmlns:data="http://www.thymeleaf.org/extras/data">
 
+
+<head>
+    <title>Pesquisa de Membros</title>
+</head>
+
+<body class="theme-blue">
+    
+   <section layout:fragment="conteudo">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>PESQUISA DE MEMBROS</h2>
+            </div>
+        
+        	<!-- Striped Rows -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="body table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nome</th>
+                                        <th>Email</th>
+                                        <th>Data de Nascimento</th>
+                                        <th>Celular</th>
+                                        <th>Situação</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   <tr th:each="membro : ${pagina.conteudo}">
+                                        <td scope="row" th:text="${membro.id}">1</td>
+                                       	<td th:text="${membro.nome}">1</td>
+                                        <td th:text="${membro.email}">1</td>
+                                        <td th:text="${membro.dataNascimento}">1</td>
+                                        <td th:text="${membro.telefone.celular}">1</td>
+                                        <td th:text="${membro.situacao}">1</td>
+                                        <td>
+					   						<a class="btn btn-link btn-xs" th:href="@{/membros/{id}(id=${membro.id})}" 
+					   								title="Editar" rel="tooltip" data-placement="top">
+					   							<span class="glyphicon glyphicon-pencil"></span>
+					   						</a>
+		   						
+											<a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-btn" title="Excluir" href="#" 
+												data:url="@{/membros/{id}(id=${membro.id})}"
+												data:objeto="${membro.nome}">
+												<i class="glyphicon glyphicon-remove"></i>
+											</a>
+		   								</td>
+                                        
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Striped Rows -->
+            
+            
+        </div>
+    </section>
+
+
+<th:block layout:fragment="javascript-extra">
+  
+    
+    </th:block>
 </body>
 </html>

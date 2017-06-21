@@ -1,15 +1,13 @@
 package br.com.shalom.model;
 
-public enum Situacao {
+public enum Status {
 	
-	BATIZADO("Batizado"),
-	ASSISTENTE("Assitente"),
-	MEMBRO("Membro"),
-	VISISTANTE("Visitante");
+	ATIVO("Ativo"),
+	INATIVO("Inativo");
 	
 	private String descricao;
 	
-	Situacao(String descricao) {
+	Status(String descricao) {
 		this.descricao = descricao;
 	}
 	

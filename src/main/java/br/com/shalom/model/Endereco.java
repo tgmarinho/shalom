@@ -19,7 +19,8 @@ public class Endereco {
 	private Long numero;
 	
 	private String complemento;
-
+	
+	private String pontoReferencia;
 	
 	public String getCep() {
 		return cep;
@@ -75,6 +76,14 @@ public class Endereco {
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+
+	public String getPontoReferencia() {
+		return pontoReferencia;
+	}
+
+	public void setPontoReferencia(String pontoReferencia) {
+		this.pontoReferencia = pontoReferencia;
 	}
 
 	

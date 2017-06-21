@@ -1,6 +1,5 @@
 package br.com.shalom.model;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 
@@ -8,34 +7,9 @@ import javax.persistence.Embeddable;
 public class Telefone {
 
 	
-	@Column(name = "ddd_fixo")
-	private String dddFixo;
-	
-	@Column(name = "telefone_fixo")
-	private String fixo;
-	
-	@Column(name = "ddd_celular")
-	private String dddCelular;
-	
-	@Column(name = "celular")
 	private String celular;
-
-
-	public String getFixo() {
-		return fixo;
-	}
-
-	public void setFixo(String fixo) {
-		this.fixo = fixo;
-	}
-
-	public String getDddFixo() {
-		return dddFixo;
-	}
-
-	public void setDddFixo(String dddFixo) {
-		this.dddFixo = dddFixo;
-	}
+	
+	private String fixo;
 
 	public String getCelular() {
 		return celular;
@@ -45,12 +19,14 @@ public class Telefone {
 		this.celular = celular;
 	}
 
-	public String getDddCelular() {
-		return dddCelular;
+	public String getFixo() {
+		return fixo;
 	}
 
-	public void setDddCelular(String dddCelular) {
-		this.dddCelular = dddCelular;
+	public void setFixo(String fixo) {
+		this.fixo = fixo;
 	}
+
+
 	
 }
