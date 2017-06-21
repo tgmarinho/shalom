@@ -9,6 +9,8 @@
 
 <head>
     <title>Pesquisa de Membros</title>
+    
+   
 </head>
 
 <body class="theme-blue">
@@ -69,7 +71,7 @@
 					   						</a>
 		   						
 											<a class="btn  btn-link  btn-xs  js-exclusao-btn" data-toggle="tooltip" data-placement="top" title="Excluir" href="#" 
-												data:url="@{/membros/{id}(id=${membro.id})}" data:objeto="${membro.nome}" data:type="success">
+												data:url="@{/membros/{id}(id=${membro.id})}" data:objeto="${membro.nome}" data:type="autoclose-timer">
 												<i class="glyphicon glyphicon-remove"></i>
 											</a>
 		   								</td>
@@ -92,6 +94,17 @@
 <th:block layout:fragment="javascript-extra">
   	<!-- Tooltip -->
     <script th:src="@{/js/pages/ui/tooltips-popovers.js}"></script>
+    
+       <!-- Demo Js -->
+    <script th:src="@{/js/demo.js}"></script>
+    
+     <!-- Sweetalert - Swal -->
+    <script th:src="@{/plugins/sweetalert/sweetalert.min.js}"></script>
+    
+     <!-- Exclucao de registros -->
+    <script th:src="@{/js/shalom.dialogo-excluir.js}"></script>
+    
+    
     
     </th:block>
 </body>
