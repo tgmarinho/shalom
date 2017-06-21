@@ -26,15 +26,22 @@
     
      <!-- Wait Me Css -->
     <link th:href="@{/plugins/waitme/waitMe.css}" rel="stylesheet" />
-
+    
+     <!-- Sweetalert - Swal -->
+    <link th:src="@{/plugins/sweetalert/sweetalert.css}" rel="stylesheet" />
+   
     <!-- Custom Css -->
-    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link th:href="@{/css/themes/all-themes.css}" rel="stylesheet" />
     
     <!-- Icone do Title -->
     <link rel="shortcut icon" th:href="@{/images/thumbs-up.png}"/>
+    
+   
+    
+    
 </head>
 
 <body class="theme-red">
@@ -51,7 +58,7 @@
                     </div>
                 </div>
             </div>
-            <p>Please wait...</p>
+            <p>Por favor aguarde...</p>
         </div>
     </div>
     <!-- #END# Page Loader -->
@@ -108,12 +115,22 @@
 
     <!-- Jquery CountTo Plugin Js -->
     <script th:src="@{/plugins/jquery-countto/jquery.countTo.js}"></script>
+    
+     <!-- Sweetalert - Swal -->
+    <script th:src="@{/plugins/sweetalert/sweetalert.min.js}"></script>
+    
+    <!-- Exclucao de registros -->
+<!--     <script th:src="@{/js/shalom.dialogo-excluir.js}"></script> -->
+
+  <!-- Exclucao de registros -->
+    <script th:src="@{/js/pages/ui/dialogs.js}"></script>
+
+
 
     <!-- Custom Js -->
     <script th:src="@{/js/admin.js}"></script>
     
-    <!-- Exlucao de registros -->
-    <script th:src="@{/js/shalom.dialogo-excluir.js}"></script>
+    
     
     <th:block layout:fragment="javascript-extra"></th:block>
 

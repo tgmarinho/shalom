@@ -1,6 +1,6 @@
 package br.com.shalom.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "membro")
@@ -24,15 +25,14 @@ public class Membro {
 	
 	private String nome;
 	
-	private LocalDateTime dataNascimento;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private LocalDate dataNascimento;
 	
-	private LocalDateTime dataMembresia;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private LocalDate dataMembresia;
 	
 	@Enumerated(EnumType.STRING)
 	private Situacao situacao;
-	
-	@Enumerated(EnumType.STRING)
-	private Status status;
 	
 	@Embedded
 	private Telefone telefone;
@@ -45,6 +45,8 @@ public class Membro {
 	private String cpf;
 	
 	private String observacao;
+	
+	private Boolean ativo;
 
 	public Long getId() {
 		return id;
@@ -60,22 +62,6 @@ public class Membro {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public LocalDateTime getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(LocalDateTime dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public LocalDateTime getDataMembresia() {
-		return dataMembresia;
-	}
-
-	public void setDataMembresia(LocalDateTime dataMembresia) {
-		this.dataMembresia = dataMembresia;
 	}
 
 	public Situacao getSituacao() {
@@ -143,14 +129,6 @@ public class Membro {
 		this.cpf = cpf;
 	}
 
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-
 	public String getObservacao() {
 		return observacao;
 	}
@@ -160,12 +138,32 @@ public class Membro {
 	}
 
 	
-	
-	
-	
-	
 	public boolean isNovo(){
 		return id == null;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public LocalDate getDataMembresia() {
+		return dataMembresia;
+	}
+
+	public void setDataMembresia(LocalDate dataMembresia) {
+		this.dataMembresia = dataMembresia;
 	}
 	
 	

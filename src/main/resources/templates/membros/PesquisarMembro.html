@@ -15,8 +15,17 @@
     
    <section layout:fragment="conteudo">
         <div class="container-fluid">
-            <div class="block-header">
-                <h2>PESQUISA DE MEMBROS</h2>
+          <div class="block-header">
+				<div class="row">
+					<div class="col-xs-10">
+						<h2> PESQUISA DE MEMBROS</h2>
+					</div>
+					<div class="col-xs-2">
+							<button type="button" onclick="location.href='/membros/novo';" data-toggle="tooltip" data-placement="left" title="Cadastrar" class="btn btn-primary btn-circle-lg waves-effect waves-circle waves-float">
+	                                <i class="material-icons">add</i>  
+	                        </button>
+					</div>
+				</div>
             </div>
         
         	<!-- Striped Rows -->
@@ -33,6 +42,7 @@
                                         <th>Data de Nascimento</th>
                                         <th>Celular</th>
                                         <th>Situação</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -45,14 +55,21 @@
                                         <td th:text="${membro.telefone.celular}">1</td>
                                         <td th:text="${membro.situacao}">1</td>
                                         <td>
+											<th:block th:if="${membro.ativo}">
+												<span class="label  label-success">Ativo</span>
+											</th:block>
+											<th:block th:unless="${membro.ativo}">
+												<span class="label  label-danger">Inativo</span>
+											</th:block>
+										</td>
+                                        <td>
 					   						<a class="btn btn-link btn-xs" th:href="@{/membros/{id}(id=${membro.id})}" 
-					   								title="Editar" rel="tooltip" data-placement="top">
+					   								data-toggle="tooltip" data-placement="top" title="Editar">
 					   							<span class="glyphicon glyphicon-pencil"></span>
 					   						</a>
 		   						
-											<a class="btn  btn-link  btn-xs  js-tooltip  js-exclusao-btn" title="Excluir" href="#" 
-												data:url="@{/membros/{id}(id=${membro.id})}"
-												data:objeto="${membro.nome}">
+											<a class="btn  btn-link  btn-xs  js-exclusao-btn" data-toggle="tooltip" data-placement="top" title="Excluir" href="#" 
+												data:url="@{/membros/{id}(id=${membro.id})}" data:objeto="${membro.nome}" data:type="success">
 												<i class="glyphicon glyphicon-remove"></i>
 											</a>
 		   								</td>
@@ -73,7 +90,8 @@
 
 
 <th:block layout:fragment="javascript-extra">
-  
+  	<!-- Tooltip -->
+    <script th:src="@{/js/pages/ui/tooltips-popovers.js}"></script>
     
     </th:block>
 </body>

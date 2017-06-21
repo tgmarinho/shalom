@@ -1,5 +1,5 @@
 $(function () {
-    $('.js-sweetalert button').on('click', function () {
+    $('.js-exclusao-btn').on('click', function () {
         var type = $(this).data('type');
         if (type === 'basic') {
             showBasicMessage();
