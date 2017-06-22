@@ -1,20 +1,18 @@
 package br.com.shalom.repository.filter;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
-import br.com.shalom.model.Status;
+import br.com.shalom.model.Situacao;
 
 public class MembroFilter {
 
 	private String nome;
 	
-	private LocalDateTime dataNascimento;
+	private String mes;
 	
-	private LocalDateTime dataMembresia;
+	private List<Situacao> situacao;
 	
-	private String situacao;
-	
-	private Status status;
+	private String status;
 	
 	private String email;
 
@@ -26,38 +24,6 @@ public class MembroFilter {
 		this.nome = nome;
 	}
 
-	public LocalDateTime getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(LocalDateTime dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public LocalDateTime getDataMembresia() {
-		return dataMembresia;
-	}
-
-	public void setDataMembresia(LocalDateTime dataMembresia) {
-		this.dataMembresia = dataMembresia;
-	}
-
-	public String getSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
-	}
-
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -65,7 +31,32 @@ public class MembroFilter {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+
+	public String getMes() {
+		return mes;
+	}
+
+	public void setMes(String mes) {
+		this.mes = mes;
+	}
+
+	public List<Situacao> getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(List<Situacao> situacao) {
+		this.situacao = situacao;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	
 	
 }

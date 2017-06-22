@@ -53,7 +53,7 @@
 	                                  <div class="col-md-6">
 	                                    <div class="form-group form-float">
 	                                        <div class="form-line">
-	                                            <input type="text" class="form-control" th:field="*{nome}" autofocus="autofocus">
+	                                            <input type="text" class="form-control" th:field="*{email}" autofocus="autofocus">
 	                                            <label class="form-label">Email</label>
 	                                        </div>
 	                                    </div>
@@ -63,20 +63,6 @@
                            	   <div class="row clearfix">
 									
 									<div class="col-sm-6">
-										 
-										 <div class="col-md-3">
-                                   			 <p>
-                                        		<b>Basic</b>
-                                    		</p>
-                                   			 <select class="form-control show-tick">
-                                      		  	<option>Mustard</option>
-                                       		 	<option>Ketchup</option>
-                                       		 	<option>Relish</option>
-                                   			 </select>
-
-                              				  </div>
-										 
-										 
 										 
 <!-- 										 <div class="form-line form-float"> -->
 <!-- 											<label class="control-label">Situação</label>  -->
@@ -95,29 +81,32 @@
 									  <div class="form-line form-float">
 										<label class="control-label">Status</label> 
 										<div>
-							  				<div class="checkbox  checkbox-inline"> 
-								    			<input type="checkbox" class="filled-in chk-col-green" id="check_ativo" value="1" />
-								    			<label th:for="check_ativo">Ativo</label>
-							    			</div>
-							    			
-							    			<div class="checkbox  checkbox-inline"> 
-								    			<input type="checkbox" class="filled-in chk-col-green" id="check_inativo" value="0" />
-								    			<label th:for="check_inativo">Inativo</label>
-							    			</div>
+							  				<label class="radio-inline">
+												<input type="radio" id="menor-preco" name="criterio" value="TRUE" th:field="*{status}">
+												<label for="menor-preco"> <span class="negrito"> Ativo</span> </label>
+											</label>
+								
+											<label class="radio-inline">
+												<input type="radio" id="preco-medio" name="criterio" value="FALSE" th:field="*{status}">
+												<label for="preco-medio"> <span class="negrito"> Inativo</span> </label>
+											</label>
+											
+											<label class="radio-inline">
+												<input type="radio" id="todos" name="criterio" value="TODOS" th:field="*{status}">
+												<label for="todos"> <span class="negrito"> Todos</span> </label>
+											</label>
 										</div>
 						  			</div>
 						  			</div>
 						  			
 						  			<div class="col-sm-3">
-                                   		<div class="form-group form-float">
-		                                    <div class="form-line">
-			                                    <select class="form-control show-tick" th:field="*{situacao}">
-			                                       <option value=""></option>
-												   <option th:each="mes : ${meses}" th:value="${mes.numero}" th:text="${mes.descricao}"></option>
-			                                    </select>
-	                                    		<label class="form-label">Anivesariantes de:</label>
-	                                    	</div>
-                                    	</div>
+		                               <label class="form-label">Anivesariantes de:</label>
+		                                  <div class="form-line">
+			                                  <select class="form-control show-tick" th:field="*{mes}">
+			                                     <option value="">Selecione</option>
+												 <option th:each="mes : ${meses}" th:value="${mes}" th:text="${mes.descricao}"></option>
+			                                  </select>
+	                                      </div>
                               		</div>
 						  			
 								</div>
