@@ -2,6 +2,7 @@ package br.com.shalom.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.shalom.model.Membro;
 import br.com.shalom.repository.Membros;
@@ -26,6 +27,11 @@ public class MembroService {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	@Transactional
+	public void alterarStatus(Long[] ids, StatusMembro statusMembro) {
+		statusMembro.executar(ids, membros);
 	}
 	
 	

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -14,18 +15,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.shalom.controller.validator.MembroValidator;
 import br.com.shalom.model.Membro;
+import br.com.shalom.model.Meses;
 import br.com.shalom.model.Situacao;
 import br.com.shalom.page.PageWrapper;
 import br.com.shalom.repository.Membros;
 import br.com.shalom.repository.filter.MembroFilter;
 import br.com.shalom.service.MembroService;
+import br.com.shalom.service.StatusMembro;
 
 @Controller
 @RequestMapping("/membros")
@@ -73,6 +79,10 @@ public class MembroController {
 	@GetMapping
 	public ModelAndView pesquisar(MembroFilter membroFilter, BindingResult result, @PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView(MEMBRO_PESQUISAR);
+		
+		mv.addObject("situacao", Situacao.values());
+		mv.addObject("meses", Meses.values());
+		
 		PageWrapper<Membro> paginaWrapper = new PageWrapper<>(membros.filtrar(membroFilter, pageable), httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
@@ -97,6 +107,12 @@ public class MembroController {
 		return ResponseEntity.ok().build();
 	}
 	
+	
+	@PutMapping("/status")
+	@ResponseStatus(HttpStatus.OK)
+	public void atualizarStatus(@RequestParam("ids[]") Long[] codigos, @RequestParam("status") StatusMembro statusMembro) {
+		membroService.alterarStatus(codigos, statusMembro);
+	}
 	
 	
 }

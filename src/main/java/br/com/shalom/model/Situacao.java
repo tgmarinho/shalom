@@ -2,9 +2,8 @@ package br.com.shalom.model;
 
 public enum Situacao {
 	
-	BATIZADO("Batizado"),
-	ASSISTENTE("Assitente"),
 	MEMBRO("Membro"),
+	ASSISTENTE("Assitente"),
 	VISISTANTE("Visitante");
 	
 	private String descricao;
