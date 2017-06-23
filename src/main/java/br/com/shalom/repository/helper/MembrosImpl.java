@@ -6,6 +6,7 @@ import javax.persistence.PersistenceContext;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class MembrosImpl implements MembrosQueries {
 			}
 			
 			if (!StringUtils.isEmpty(filtro.getEmail())) {
-				criteria.add(Restrictions.ilike("email", filtro.getEmail(), MatchMode.START));
+				criteria.add(Restrictions.ilike("email", filtro.getEmail(), MatchMode.ANYWHERE));
 			}
 			
 			if (!StringUtils.isEmpty(filtro.getStatus())) {
@@ -68,18 +69,12 @@ public class MembrosImpl implements MembrosQueries {
 				}
 			}
 			
-			if (filtro.getSituacao() != null && !filtro.getSituacao().isEmpty()) {
-//				List<Criterion> subqueries = new ArrayList<>();
-//				for (Long codigoGrupo : filtro.getGrupos().stream().mapToLong(Grupo::getCodigo).toArray()) {
-//					DetachedCriteria dc = DetachedCriteria.forClass(UsuarioGrupo.class);
-//					dc.add(Restrictions.eq("id.grupo.codigo", codigoGrupo));
-//					dc.setProjection(Projections.property("id.usuario"));
-//					
-//					subqueries.add(Subqueries.propertyIn("codigo", dc));
-//				}
-//				
-//				Criterion[] criterions = new Criterion[subqueries.size()];
-//				criteria.add(Restrictions.and(subqueries.toArray(criterions)));
+			if (!StringUtils.isEmpty(filtro.getMes())) {
+				criteria.add(Restrictions.sqlRestriction("month(data_nascimento) = " + filtro.getMes()));
+			}
+			
+			if (filtro.getSituacoes() != null && !filtro.getSituacoes().isEmpty()) {
+				criteria.add(Restrictions.in("situacao", filtro.getSituacoes())).addOrder(Order.asc("situacao"));
 			}
 		}
 	}

@@ -62,19 +62,20 @@
                            	
                            	   <div class="row clearfix">
 									
+									
 									<div class="col-sm-6">
 										 
-<!-- 										 <div class="form-line form-float"> -->
-<!-- 											<label class="control-label">Situação</label>  -->
-<!-- 											<div> -->
-<!-- 												<th:block th:each="situacao,iterStat : ${situacao}"> -->
-<!-- 								  					<div class="checkbox  checkbox-inline">  -->
-<!-- 									    				<input type="checkbox" class="filled-in chk-col-green" th:id=${iterStat.index} th:value="${situacao}" /> -->
-<!-- 									    				<label th:for="${iterStat.index}" th:text="${situacao.descricao}">Membro</label> -->
-<!-- 								    				</div> -->
-<!-- 								    			</th:block> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
+										 <div class="form-line form-float">
+											<label class="control-label">Situação</label> 
+											<div>
+												<th:block th:each="situacao,iterStat : ${situacao}">
+								  					<div class="checkbox checkbox-inline"> 
+									    				<input type="checkbox" class="filled-in chk-col-indigo" th:id="${iterStat.index}" th:value="${situacao}" th:field="*{situacoes}" />
+									    				<label th:for="${iterStat.index}" th:text="${situacao.descricao}">Membro</label>
+								    				</div>
+								    			</th:block>
+											</div>
+										</div>
 						  			</div>
 						  			
 						  			<div class="col-sm-3">
@@ -104,7 +105,7 @@
 		                                  <div class="form-line">
 			                                  <select class="form-control show-tick" th:field="*{mes}">
 			                                     <option value="">Selecione</option>
-												 <option th:each="mes : ${meses}" th:value="${mes}" th:text="${mes.descricao}"></option>
+												 <option th:each="mes : ${meses}" th:value="${mes.numero}" th:text="${mes.descricao}"></option>
 			                                  </select>
 	                                      </div>
                               		</div>
@@ -239,6 +240,10 @@
     
     <!-- Selecao multi -->   
     <script th:src="@{/js/multiselecao.js}"></script>
+    
+    <script>
+		$('input[type=hidden]').remove();
+	</script>
     
     </th:block>
 </body>

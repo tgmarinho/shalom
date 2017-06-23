@@ -8,9 +8,9 @@ public class MembroFilter {
 
 	private String nome;
 	
-	private String mes;
+	private Integer mes;
 	
-	private List<Situacao> situacao;
+	private List<Situacao> situacoes;
 	
 	private String status;
 	
@@ -33,20 +33,12 @@ public class MembroFilter {
 	}
 
 
-	public String getMes() {
+	public Integer getMes() {
 		return mes;
 	}
 
-	public void setMes(String mes) {
+	public void setMes(Integer mes) {
 		this.mes = mes;
-	}
-
-	public List<Situacao> getSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(List<Situacao> situacao) {
-		this.situacao = situacao;
 	}
 
 	public String getStatus() {
@@ -55,6 +47,14 @@ public class MembroFilter {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public List<Situacao> getSituacoes() {
+		return situacoes;
+	}
+
+	public void setSituacoes(List<Situacao> situacoes) {
+		this.situacoes = situacoes;
 	}
 
 	

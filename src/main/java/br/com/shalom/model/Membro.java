@@ -25,10 +25,10 @@ public class Membro {
 	
 	private String nome;
 	
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataNascimento;
 	
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataMembresia;
 	
 	@Enumerated(EnumType.STRING)
@@ -165,6 +165,7 @@ public class Membro {
 	public void setDataMembresia(LocalDate dataMembresia) {
 		this.dataMembresia = dataMembresia;
 	}
-	
+
+
 	
 }
