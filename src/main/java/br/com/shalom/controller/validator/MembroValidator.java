@@ -19,6 +19,7 @@ public class MembroValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmpty(errors, "nome", "", "O Nome é obrigatório");
 		ValidationUtils.rejectIfEmpty(errors, "situacao", "", "A Situação é Obrigatório");
+		ValidationUtils.rejectIfEmpty(errors, "sexo", "", "O Sexo é Obrigatório");
 	}
 	
 }

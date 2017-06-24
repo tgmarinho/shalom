@@ -8,7 +8,7 @@
 
 
 <head>
-    <title>Pesquisa de Membros</title>
+    <title>Aniversariantes</title>
     <!-- Select Plugin Js -->
     <script th:src="@{/plugins/bootstrap-select/js/bootstrap-select.js}"></script>
    
@@ -21,12 +21,7 @@
           <div class="block-header">
 				<div class="row">
 					<div class="col-xs-10">
-						<h2> PESQUISA DE MEMBROS</h2>
-					</div>
-					<div class="col-xs-2">
-							<button type="button" onclick="location.href='/membros/novo';" data-toggle="tooltip" data-placement="left" title="Cadastrar" class="btn btn-primary btn-circle-lg waves-effect waves-circle waves-float">
-	                                <i class="material-icons">add</i>  
-	                        </button>
+						<h2>ANIVERSARIANTES</h2>
 					</div>
 				</div>
             </div>
@@ -36,49 +31,23 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                     
-                    <form method="GET" th:object="${membroFilter}" th:action="@{/membros}">
+                    <form method="GET" th:object="${membroFilter}" th:action="@{/membros/aniversariantes}">
 						
 						<div class="body">
-                           
-                            <div class="row clearfix">
-	                                <div class="col-md-5">
-	                                    <div class="form-group form-float">
-	                                        <div class="form-line">
-	                                            <input type="text" class="form-control" th:field="*{nome}" autofocus="autofocus">
-	                                            <label class="form-label">Nome</label>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                                 
-	                                  <div class="col-md-5">
-	                                    <div class="form-group form-float">
-	                                        <div class="form-line">
-	                                            <input type="text" class="form-control" th:field="*{email}" autofocus="autofocus">
-	                                            <label class="form-label">Email</label>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                                
-	                               <div class="col-md-2">
-                              		<div class="form-group form-float">
-	                                    <div class="form-line">
-		                                    <select class="form-control" th:field="*{sexo}">
-		                                       <option value=""></option>
-		                                       <option th:value="MASCULINO">Masculino</option>
-		                                       <option th:value="FEMININO">Feminino</option>
-		                                    </select>
-                                    		<label class="form-label">Sexo</label>
-                                    	</div>
-                                    </div>
-                                </div>
-                                	
-                               </div>
                            	
                            	   <div class="row clearfix">
 									
-									
-									<div class="col-sm-6">
-										 
+									<div class="col-sm-4">
+		                               <label class="form-label">Mês de:</label>
+		                                  <div class="form-line">
+			                                  <select class="form-control show-tick" th:field="*{mes}">
+			                                     <option value="">Selecione</option>
+												 <option th:each="mes : ${meses}" th:value="${mes.numero}" th:text="${mes.descricao}"></option>
+			                                  </select>
+	                                      </div>
+                              		</div>
+                              		
+									<div class="col-sm-4">
 										 <div class="form-line form-float">
 											<label class="control-label">Situação</label> 
 											<div>
@@ -92,7 +61,7 @@
 										</div>
 						  			</div>
 						  			
-						  			<div class="col-sm-3">
+						  			<div class="col-sm-4">
 									  <div class="form-line form-float">
 										<label class="control-label">Status</label> 
 										<div>
@@ -114,16 +83,46 @@
 						  			</div>
 						  			</div>
 						  			
-						  			<div class="col-sm-3">
-		                               <label class="form-label">Anivesariantes de:</label>
-		                                  <div class="form-line">
-			                                  <select class="form-control show-tick" th:field="*{mes}">
-			                                     <option value="">Selecione</option>
-												 <option th:each="mes : ${meses}" th:value="${mes.numero}" th:text="${mes.descricao}"></option>
-			                                  </select>
-	                                      </div>
-                              		</div>
-						  			
+								</div>
+								
+								<div class="row clearfix">
+								 	<div class="demo-masked-input">	
+										<div class="col-sm-4">
+			                               <label class="form-label">Entre Data Inicial</label>
+			                                  <div class="input-group">
+	                                            	<span class="input-group-addon">
+	                                                	<i class="material-icons">date_range</i>
+	                                            	</span>
+	                                            	<div class="form-line">
+	                                                	<input type="text" class="form-control date" placeholder="Ex: 30/07/2016">
+	                                           	 	</div>
+	                                        	</div>
+	                              		</div>
+                              		
+	                              		<div class="col-sm-4">
+			                               <label class="form-label">Data Final</label>
+			                                  <div class="input-group">
+	                                            	<span class="input-group-addon">
+	                                                	<i class="material-icons">date_range</i>
+	                                            	</span>
+	                                            	<div class="form-line">
+	                                                	<input type="text" class="form-control date" placeholder="Ex: 30/07/2016">
+	                                           	 	</div>
+	                                        	</div>
+	                              		</div>
+	                              		
+	                              		<div class="col-sm-4">
+										 <div class="form-line form-float">
+											<label class="control-label"> </label> 
+											<div>
+								  				<div class="checkbox checkbox-inline"> 
+									    			<input type="checkbox" id="chk_semana" class="filled-in chk-col-indigo" th:value="${situacao}"  />
+									    			<label for="chk_semana" class="control-label">Dessa semana</label>
+								    			</div>
+											</div>
+										</div>
+						  			</div>
+									</div>
 								</div>
                            	
                          	 <div class="row clearfix">
@@ -142,7 +141,6 @@
 							</div>
                               
                          </div>
-						
 					
 				
 				</form>
@@ -160,26 +158,9 @@
                     
                         <div class="body table-responsive">
                         	
-                        	<div>
-								<button class="btn btn-default  btn-xs  js-status-btn  disabled" data:status="ATIVAR" data:url="@{/membros/status}">
-									<span>Ativar</span>
-								</button>
-				
-								<button class="btn btn-default  btn-xs  js-status-btn  disabled" data:status="DESATIVAR" data:url="@{/membros/status}">
-									<span>Desativar</span>
-								</button>
-							</div>
-                        
-                        
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                    	<th>
-	            							<div class="checkbox aw-checkbox-no-margin">
-	            								<input type="checkbox" id="filled-in-box" class="filled-in chk-col-blue js-selecao-todos"/>
-	            								<label for="filled-in-box"></label>
-	            							</div>
-	            						</th>
                                         <th>Nome</th>
                                         <th>Email</th>
                                         <th>Data de Nascimento</th>
@@ -191,12 +172,6 @@
                                 </thead>
                                 <tbody>
                                    <tr th:each="membro : ${pagina.conteudo}">
-                                   		<td>
-											<div class="aw-checkbox-no-margim">
-					            				<input type="checkbox" th:id="|filled-in-box_${membro.id}|" class="filled-in chk-col-blue js-selecao" data:id="${membro.id}">
-					            				<label th:for="|filled-in-box_${membro.id}|"></label>
-					            			</div>
-										</td>
                                        	<td th:text="${membro.nome}">1</td>
                                         <td th:text="${membro.email}">1</td>
                                         <td th:text="${{membro.dataNascimento}}">1</td>
@@ -211,11 +186,6 @@
 											</th:block>
 										</td>
                                         <td>
-					   						<a class="btn btn-link btn-xs" th:href="@{/membros/{id}(id=${membro.id})}" 
-					   								data-toggle="tooltip" data-placement="top" title="Editar">
-					   							<span class="glyphicon glyphicon-pencil"></span>
-					   						</a>
-		   						
 											<a class="btn  btn-link  btn-xs  js-exclusao-btn" data-toggle="tooltip" data-placement="top" title="Excluir" href="#" 
 												data:url="@{/membros/{id}(id=${membro.id})}" data:objeto="${membro.nome}" data:type="autoclose-timer">
 												<i class="glyphicon glyphicon-remove"></i>
@@ -225,7 +195,7 @@
                                     </tr>
                                   
                                     <tr th:if="${pagina.vazia}">
-	                					<td colspan="8">Nenhum membro encontrado</td>
+	                					<td colspan="8">Nenhum aniversariante encontrado</td>
 	                				</tr>
                                     
                                 </tbody>
@@ -243,14 +213,17 @@
 
 <th:block layout:fragment="javascript-extra">
   	   
+    <!-- Input Mask Plugin Js -->
+    <script th:src="@{/plugins/jquery-inputmask/jquery.inputmask.bundle.js}"></script>
+   
     <!-- Tooltip -->
     <script th:src="@{/js/pages/ui/tooltips-popovers.js}"></script>
     
-    <!-- Exclucao de registros -->
-    <script th:src="@{/js/shalom.dialogo-excluir.js}"></script>
-    
      <!-- Waves Effect Plugin Js -->
     <script th:src="@{/plugins/node-waves/waves.js}"></script>
+    
+     <!-- Custom Js -->
+    <script th:src="@{/js/pages/forms/advanced-form-elements.js}"></script>
     
     <!-- Selecao multi -->   
     <script th:src="@{/js/multiselecao.js}"></script>

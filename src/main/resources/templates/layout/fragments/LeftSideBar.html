@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt" 
 	  xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shalom="http://shalom.com.br">
 	
 
 <!-- Left Sidebar -->
@@ -39,20 +40,46 @@
                             <span>Home</span>
                         </a>
                     </li>
+                    
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
+                            <i class="material-icons">person</i>
                             <span>Membros</span>
                         </a>
                         <ul class="ml-menu">
-                               <li>
+                               <li shalom:menu="@{/membros.*}">
                                    <a th:href="@{/membros/novo}">Cadastro</a>
                                </li>
-                               <li>
+                              <li shalom:menu="@{/membros}">
+                                    <a th:href="@{/membros}">Pesquisa</a>
+                              </li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                       <a th:href="@{/membros/aniversariantes}">
+                            <i class="material-icons">cake</i>
+                            <span>Aniversariantes</span>
+                       </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">date_range</i>
+                            <span>Eventos</span>
+                        </a>
+                        <ul class="ml-menu">
+                               <li shalom:menu="@{/eventos.*}">
+                                   <a th:href="@{/eventos/novo}">Novo</a>
+                               </li>
+                              <li shalom:menu="@{/membros}">
                                     <a th:href="@{/membros}">Pesquisa</a>
                                </li>
                         </ul>
                     </li>
+                    
+                 </ul>
                    
             </div>
             <!-- #Menu -->

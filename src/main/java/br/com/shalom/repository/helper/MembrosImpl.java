@@ -18,6 +18,7 @@ import org.springframework.util.StringUtils;
 
 import br.com.shalom.model.Membro;
 import br.com.shalom.paginacao.PaginacaoUtil;
+import br.com.shalom.repository.filter.MembroAniversarianteFilter;
 import br.com.shalom.repository.filter.MembroFilter;
 
 public class MembrosImpl implements MembrosQueries {
@@ -53,6 +54,10 @@ public class MembrosImpl implements MembrosQueries {
 				criteria.add(Restrictions.ilike("nome", filtro.getNome(), MatchMode.ANYWHERE));
 			}
 			
+			if (!StringUtils.isEmpty(filtro.getSexo())) {
+				criteria.add(Restrictions.eq("sexo", filtro.getSexo()));
+			}
+			
 			if (!StringUtils.isEmpty(filtro.getEmail())) {
 				criteria.add(Restrictions.ilike("email", filtro.getEmail(), MatchMode.ANYWHERE));
 			}
@@ -77,6 +82,31 @@ public class MembrosImpl implements MembrosQueries {
 				criteria.add(Restrictions.in("situacao", filtro.getSituacoes())).addOrder(Order.asc("situacao"));
 			}
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(readOnly = true)
+	public Page<Membro> filtrarAniversariantes(MembroFilter filtro, Pageable pageable) {
+
+		Criteria criteria = manager.unwrap(Session.class).createCriteria(Membro.class);
+		
+		paginacaoUtil.preparar(criteria, pageable);
+		adicionarFiltroNiver(filtro, criteria);
+		
+		return new PageImpl<>(criteria.list(), pageable, totalAniversario(filtro));
+	}
+	
+	private Long totalAniversario(MembroFilter filtro) {
+		Criteria criteria = manager.unwrap(Session.class).createCriteria(Membro.class);
+		adicionarFiltroNiver(filtro, criteria);
+		criteria.setProjection(Projections.rowCount());
+		return (Long) criteria.uniqueResult();
+	}
+	
+	private void adicionarFiltroNiver(MembroFilter filtro, Criteria criteria) {
+		
+		
 	}
 
 }

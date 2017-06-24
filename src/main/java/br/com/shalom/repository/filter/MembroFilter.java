@@ -15,6 +15,8 @@ public class MembroFilter {
 	private String status;
 	
 	private String email;
+	
+	private String sexo;
 
 	public String getNome() {
 		return nome;
@@ -55,6 +57,14 @@ public class MembroFilter {
 
 	public void setSituacoes(List<Situacao> situacoes) {
 		this.situacoes = situacoes;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 
 	

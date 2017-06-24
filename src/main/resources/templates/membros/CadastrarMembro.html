@@ -15,7 +15,7 @@
 
 </head>
 
-<body class="theme-red">
+<body class="theme-blue">
     
    <section layout:fragment="conteudo">
         <div class="container-fluid">
@@ -52,7 +52,7 @@
                         <div class="body">
                           <div class="demo-masked-input">
                             <div class="row clearfix">
-                                <div class="col-md-12">
+                                <div class="col-md-10">
                                     <div class="form-group form-float">
                                         <div class="form-line" th:classappend="${#fields.hasErrors('nome')} ? 'focused error' " >
                                             <input type="text" class="form-control" th:field="*{nome}" autofocus="autofocus">
@@ -60,10 +60,22 @@
                                         </div>
                                     </div>
                                 </div>
+                              	
+                              	<div class="col-md-2">
+                              		<div class="form-group form-float">
+	                                    <div class="form-line" th:classappend="${#fields.hasErrors('sexo')} ? 'focused error' ">
+		                                    <select class="form-control" th:field="*{sexo}">
+		                                       <option value=""></option>
+		                                       <option value="MASCULINO">Masculino</option>
+		                                       <option value="FEMININO">Feminino</option>
+		                                    </select>
+                                    		<label class="form-label">Sexo</label>
+                                    	</div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row clearfix">
-                            
                                <div class="col-md-4">
                                         Data de Nascimento
                                         <div class="input-group">
@@ -153,7 +165,7 @@
 		                                       <option value=""></option>
 											   <option th:each="sit : ${situacao}" th:value="${sit}" th:text="${sit.descricao}"></option>
 		                                    </select>
-                                    		<label class="form-label">Situação:</label>
+                                    		<label class="form-label">Situação</label>
                                     	</div>
                                     </div>
                               </div>
@@ -162,7 +174,7 @@
                                     <div class="form-group form-float">
                                         <div class="form-line">
                                             <input type="text" class="form-control" th:field="*{observacao}">
-                                            <label class="form-label">Observação</label>
+                                            <label class="form-label">Observação: tem algum dom, é filho de membro... algo relevante sobre a pesso</label>
                                         </div>
                                     </div>
                                 </div>
@@ -254,13 +266,6 @@
 
 <th:block layout:fragment="javascript-extra">
 
-
-  	<!-- Jquery Core Js -->
-    <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
-
-    <!-- Bootstrap Core Js -->
-    <script th:src="@{/plugins/bootstrap/js/bootstrap.js}"></script>
-
     <!-- Input Mask Plugin Js -->
     <script th:src="@{/plugins/jquery-inputmask/jquery.inputmask.bundle.js}"></script>
 
@@ -268,7 +273,6 @@
     <script th:src="@{/plugins/node-waves/waves.js}"></script>
 
     <!-- Custom Js -->
-    <script th:src="@{/js/admin.js}"></script>
     <script th:src="@{/js/pages/forms/advanced-form-elements.js}"></script>
     
     <!-- Tooltip -->

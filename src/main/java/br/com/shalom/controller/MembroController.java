@@ -29,6 +29,7 @@ import br.com.shalom.model.Meses;
 import br.com.shalom.model.Situacao;
 import br.com.shalom.page.PageWrapper;
 import br.com.shalom.repository.Membros;
+import br.com.shalom.repository.filter.MembroAniversarianteFilter;
 import br.com.shalom.repository.filter.MembroFilter;
 import br.com.shalom.service.MembroService;
 import br.com.shalom.service.StatusMembro;
@@ -39,6 +40,7 @@ public class MembroController {
 
 	private static String MEMBRO_CADASTRAR = "membros/CadastrarMembro";
 	private static String MEMBRO_PESQUISAR = "membros/PesquisarMembro";
+	private static String MEMBRO_ANIVERSARIANTE = "membros/Aniversariantes";
 	private static String REDIRECT_MEMBRO_VIEW = "redirect:/membros/novo";
 	
 	@Autowired
@@ -114,5 +116,18 @@ public class MembroController {
 		membroService.alterarStatus(codigos, statusMembro);
 	}
 	
+	
+	
+	@GetMapping("/aniversariantes")
+	public ModelAndView aniversariantes(MembroFilter membroFilter, BindingResult result, @PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView(MEMBRO_ANIVERSARIANTE);
+		
+		mv.addObject("situacao", Situacao.values());
+		mv.addObject("meses", Meses.values());
+		
+		PageWrapper<Membro> paginaWrapper = new PageWrapper<>(membros.filtrarAniversariantes(membroFilter, pageable), httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+	}
 	
 }

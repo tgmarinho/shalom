@@ -10,4 +10,6 @@ public interface MembrosQueries {
 	
 	public Page<Membro> filtrar(MembroFilter filtro, Pageable pageable);
 	
+	public Page<Membro> filtrarAniversariantes(MembroFilter membroAniversarianteFilter, Pageable pageable);
+	
 }

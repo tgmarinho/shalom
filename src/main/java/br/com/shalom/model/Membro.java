@@ -34,6 +34,8 @@ public class Membro {
 	@Enumerated(EnumType.STRING)
 	private Situacao situacao;
 	
+	private String sexo;
+	
 	@Embedded
 	private Telefone telefone;
 	
@@ -164,6 +166,14 @@ public class Membro {
 
 	public void setDataMembresia(LocalDate dataMembresia) {
 		this.dataMembresia = dataMembresia;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 
 
