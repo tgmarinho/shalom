@@ -3,7 +3,7 @@ package br.com.shalom.model;
 public enum Situacao {
 	
 	MEMBRO("Membro"),
-	ASSISTENTE("Assitente"),
+	ASSISTENTE("Assistente"),
 	VISISTANTE("Visitante");
 	
 	private String descricao;
