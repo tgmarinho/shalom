@@ -9,7 +9,7 @@ public class Inicial {
 	
 	@GetMapping("/")
 	public String root() {
-		return "membros/CadastrarMembro";
+		return "index";
 	}
 	
 }
