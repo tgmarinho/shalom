@@ -6,7 +6,7 @@
 	<groupId>br.com.shalom</groupId>
 	<artifactId>Shalom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>shalom</name>
 	<description>Igreja Batista do Avivamento Shalom</description>
@@ -179,6 +179,8 @@
 			<!-- </processTypes> -->
 			<!-- </configuration> -->
 			<!-- </plugin> -->
+			
+			
 
 		</plugins>
 	</build>
