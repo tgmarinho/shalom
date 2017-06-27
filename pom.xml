@@ -42,8 +42,8 @@
 		
 		<mysql-connector-java.version>5.1.39</mysql-connector-java.version>
 		
-		
-
+		<!-- Apache Commons DBCP -->
+		<commons-dbcp2-version>2.1.1</commons-dbcp2-version>
 
 	</properties>
 
@@ -101,6 +101,10 @@
 			<artifactId>commons-beanutils</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+		</dependency>
 
 		<!-- <dependency> -->
 		<!-- <groupId>com.microsoft.sqlserver</groupId> -->
