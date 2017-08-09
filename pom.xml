@@ -140,6 +140,12 @@
 <!-- 			<artifactId>aws-java-sdk</artifactId> -->
 <!-- 			<version>1.9.11</version> -->
 <!-- 		</dependency> -->
+		<!-- Manipulando arquivo Excel Apche POI -->
+        <dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>3.7</version>
+		</dependency>
 
 
 		<dependency>

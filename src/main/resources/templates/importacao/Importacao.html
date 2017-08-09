@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/LayoutPadrao}"
+    xmlns:shalom="http://shalom.com.br"
+	xmlns:data="http://www.thymeleaf.org/extras/data">
+
+
+<head>
+    <title>Importação de Membros</title>
+    
+    <!-- bootstrap-switch - Ativo/Inativo -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-switch.min.css}"/>
+	 <!-- Dropzone Css -->
+    <link href="../../plugins/dropzone/dropzone.css" rel="stylesheet">
+
+</head>
+
+<body class="theme-blue">
+    
+   <section layout:fragment="conteudo">
+        <div class="container-fluid">
+            
+        
+<!--          <shalom:message/> -->
+         
+        
+        <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                               ENVIAR ARQUIVO DO EXCEL
+                            </h2>
+                        </div>
+                        
+                        
+                        <div class="body"> 
+                            <form method="POST" th:action="@{/importacao/importar}"  id="frmFileUpload" class="dropzone" enctype="multipart/form-data">
+                                <div class="dz-message">
+                                    <div class="drag-icon-cph">
+                                        <i class="material-icons">touch_app</i>
+                                    </div>
+                                    <h3>Joque a planilha do Excel aqui e será feito a importação automáticamente</h3>
+                                    <em>(Por favor <strong>aguarde</strong> o upload e importação)</em>
+                                </div>
+                                <div class="fallback">
+                                    <input name="file" type="file" accept=".xls,.xlsx" />
+                                </div>
+                            </form>
+                            
+                        </div>
+                         
+                       
+                      
+                       
+                    </div>
+                     
+                    
+                </div>
+                
+               
+                
+                
+            </div>
+            
+            
+            
+        
+            
+            
+        </div>
+    </section>
+
+
+<th:block layout:fragment="javascript-extra">
+
+    <!-- Input Mask Plugin Js -->
+    <script th:src="@{/plugins/jquery-inputmask/jquery.inputmask.bundle.js}"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script th:src="@{/plugins/node-waves/waves.js}"></script>
+
+    <!-- Custom Js -->
+    <script th:src="@{/js/pages/forms/advanced-form-elements.js}"></script>
+    
+    <!-- Tooltip -->
+    <script th:src="@{/js/pages/ui/tooltips-popovers.js}"></script>
+
+	<!-- Button Switch - Ativo/Inativo -->
+    <script th:src="@{/js/pages/forms/bootstrap-switch.min.js}"></script>
+    
+    <!-- Dropzone Plugin Js -->
+    <script src="../../plugins/dropzone/dropzone.js"></script>
+	<script>
+		$('.js-status').bootstrapSwitch();
+	</script>
+    
+    </th:block>
+</body>
+</html>
